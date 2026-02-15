@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.content.Context.RECEIVER_NOT_EXPORTED
 import android.util.Log
 import androidx.core.content.ContextCompat
-
 class MainActivity : AppCompatActivity() {
     private lateinit var myReceiver: MyBroadcastReceiver
 
