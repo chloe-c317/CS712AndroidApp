@@ -6,4 +6,6 @@
     <string name="implicit_text">Implicit button</string>
     <string name="second_activity_title">Mobile Software Engineering Challenges</string>
     <string name="Back_to_main_button">Return to main activity</string>
+    <string name="start_service_button">Start Service</string>
+    <string name="send_broadcast">Send Broadcast</string>
 </resources>
