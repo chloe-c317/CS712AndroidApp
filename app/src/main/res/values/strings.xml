@@ -8,4 +8,5 @@
     <string name="Back_to_main_button">Return to main activity</string>
     <string name="start_service_button">Start Service</string>
     <string name="send_broadcast">Send Broadcast</string>
+    <string name="view_image_activity">View Image Activity</string>
 </resources>

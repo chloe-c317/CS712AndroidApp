@@ -7,7 +7,6 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import android.content.Context.RECEIVER_NOT_EXPORTED
 import android.util.Log
 import androidx.core.content.ContextCompat
 class MainActivity : AppCompatActivity() {
@@ -34,7 +33,11 @@ class MainActivity : AppCompatActivity() {
         startServiceBtn.setOnClickListener{
             Toast.makeText(this, "Start Clicked", Toast.LENGTH_SHORT).show()
             val serviceIntent = Intent(this, MyForegroundService::class.java)
-            startForegroundService(serviceIntent)
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
+                startForegroundService(serviceIntent)
+            }else{
+                startService(serviceIntent)
+            }
         }
 
         val sendBroadcastBtn = findViewById<Button>(R.id.sendBroadcastBtn)
@@ -44,6 +47,12 @@ class MainActivity : AppCompatActivity() {
                 setPackage(packageName)
             }
             sendBroadcast(intent)
+        }
+
+        val viewImageBtn = findViewById<Button>(R.id.imageActivityBtn)
+        viewImageBtn.setOnClickListener{
+            val intent = Intent(this, ThirdActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -58,7 +67,7 @@ class MainActivity : AppCompatActivity() {
             this,
             myReceiver,
             filter,
-            RECEIVER_NOT_EXPORTED
+            ContextCompat.RECEIVER_NOT_EXPORTED
         )
     }
 
