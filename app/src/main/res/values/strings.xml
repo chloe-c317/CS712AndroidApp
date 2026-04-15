@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">712_Assignment2</string>
+    <string name="app_name">712AndroidApp</string>
     <string name="button_text">Explicit button</string>
     <string name="student_id">Student ID: 1582454</string>
     <string name="student_name">Student Name: Chloe Chinault</string>
