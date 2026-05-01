@@ -2,6 +2,7 @@ package com.example.a712_assignment2
 
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -17,16 +18,22 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        if(checkSelfPermission("com.example.a712_assignment2.MSE712") != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(arrayOf("com.example.a712_assignment2.MSE712"), 712)
+        }
+        enableButtons()
+    }
+
+    // Implemented enableButtons() to move direct button behavior from onCreate
+    private fun enableButtons(){
         val explicitBtn = findViewById<Button>(R.id.explicitButton)
-        explicitBtn.setOnClickListener{
-            val intent = Intent(this,SecondActivity::class.java)
-            startActivity(intent)
+        explicitBtn.setOnClickListener {
+            startActivity(Intent(this, SecondActivity::class.java))
         }
 
         val implicitBtn = findViewById<Button>(R.id.implicitButton)
-        implicitBtn.setOnClickListener{
-            val intent = Intent("com.example.a712_assignment2.OPEN_SECOND")
-            startActivity(intent)
+        implicitBtn.setOnClickListener {
+            startActivity(Intent("com.example.a712_assignment2.OPEN_SECOND"))
         }
 
         val startServiceBtn = findViewById<Button>(R.id.startServiceButton)
